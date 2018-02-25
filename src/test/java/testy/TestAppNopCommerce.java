@@ -93,10 +93,10 @@ public class TestAppNopCommerce {
         driver.get("http://demo.nopcommerce.com/login");
 
         WebElement userLoginFieldElement = driver.findElement(By.xpath("//input[@id='Email']"));
-        userLoginFieldElement.sendKeys("michalpiotrowski@test.pl");
+        userLoginFieldElement.sendKeys("waldemarmozola@test.pl");
 
         WebElement userPasswordFieldElement = driver.findElement(By.xpath("//input[@id='Password']"));
-        userPasswordFieldElement.sendKeys("razdwatrzy123");
+        userPasswordFieldElement.sendKeys("qwerty@123");
 
         WebElement loginFieldElement = driver.findElement(By.xpath("//input[@class='button-1 login-button']"));
         loginFieldElement.click();
@@ -105,6 +105,19 @@ public class TestAppNopCommerce {
         assertTrue("Button is not displayed.", loginFieldElement1.isDisplayed());
     }
 
+    @Test
+    public void search(){
+        driver.get("http://demo.nopcommerce.com/");
+
+        WebElement searchFieldElement = driver.findElement(By.xpath("//input[@id='small-searchterms']"));
+        searchFieldElement.sendKeys("nokia lumia 1020");
+
+        WebElement searchButtonFieldElement = driver.findElement(By.xpath("//input[@type='submit']"));
+        searchButtonFieldElement.click();
+
+        WebElement confirmationProductText = driver.findElement(By.xpath("//h2[@class='product-title']"));
+        assertEquals("Product was not found.", "Nokia Lumia 1020", confirmationProductText.getText());
+    }
 
 
 
